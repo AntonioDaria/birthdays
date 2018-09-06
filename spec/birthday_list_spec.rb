@@ -1,5 +1,5 @@
 require 'birthday_list'
-
+require 'date'
 describe BirthdayList do
   describe "#add" do
     it "adds people's birthday" do
@@ -8,7 +8,8 @@ describe BirthdayList do
       #2 - Execute (make my object do something)
       birthdaylist.add("jon", "1/2/1980")
       #3 - Assert (did my object do the correct thing?)
-      expect(birthdaylist.list).to include({name: "jon", date: "1/2/1980"})
+      final_date = Date.new(1980,2,1)
+      expect(birthdaylist.list).to include({name: "jon", date: final_date })
     end
   end
 
@@ -31,6 +32,16 @@ describe BirthdayList do
   describe "#process_date" do
     it 'converts a string date into a Date object' do
       expect( subject.process_date("1/2/1980") ).to eq(Date.new(1980, 2, 1))
+    end
+  end
+  describe "#current_date" do
+    it 'returns the current date' do
+      expect( subject.current_date).to eq(Date.today)
+    end
+  end
+  describe "#returns_birthday" do
+    it 'checks if the date matches the current date' do
+      expect( subject.returns_birthday)to
     end
   end
 end

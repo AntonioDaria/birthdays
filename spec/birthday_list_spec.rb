@@ -34,14 +34,27 @@ describe BirthdayList do
       expect( subject.process_date("1/2/1980") ).to eq(Date.new(1980, 2, 1))
     end
   end
+  
   describe "#current_date" do
     it 'returns the current date' do
       expect( subject.current_date).to eq(Date.today)
     end
   end
-  describe "#returns_birthday" do
-    it 'checks if the date matches the current date' do
-      expect( subject.returns_birthday)to
+
+  describe "#correct_hash" do
+    it 'converts date object and returns array of hash' do
+      subject.add("john","6/9/2000")
+      subject.add("andy","1/2/1900")
+      expect(subject.correct_hash).to eq([{name: "john",day: 6, month: 9},{name: "andy", day: 1, month: 2}])
     end
   end
+  
+=begin
+  describe "#birthday?" do
+    it 'returns true if birthday matches todays date' do
+      subject.add("john","6/9/2000")
+      expect(subject.birthday?).to be_true
+    end
+  end
+=end
 end

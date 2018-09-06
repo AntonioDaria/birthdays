@@ -6,9 +6,9 @@ describe BirthdayList do
       #1 - Setup (create an object)
       birthdaylist  = BirthdayList.new
       #2 - Execute (make my object do something)
-      birthdaylist.add("jon", "1/1/1980")
+      birthdaylist.add("jon", "1/2/1980")
       #3 - Assert (did my object do the correct thing?)
-      expect(birthdaylist.list).to include({name: "jon", date: "1/1/1980"})
+      expect(birthdaylist.list).to include({name: "jon", date: "1/2/1980"})
     end
   end
 
@@ -25,6 +25,12 @@ describe BirthdayList do
       subject.add("andres", "9/9/1990")
       subject.add("antonio", "7/4/1990")
       expect{ subject.display }.to output("andres 9/9/1990\nantonio 7/4/1990\n").to_stdout
+    end
+  end
+
+  describe "#process_date" do
+    it 'converts a string date into a Date object' do
+      expect( subject.process_date("1/2/1980") ).to eq(Date.new(1980, 2, 1))
     end
   end
 end

@@ -1,4 +1,6 @@
 require 'pry'
+require 'date'
+
 class BirthdayList
   attr_reader :list
 
@@ -6,7 +8,16 @@ class BirthdayList
     @list = []
   end
 
+  def process_date(date)
+    day,month,year = date.split("/")
+    day = day.to_i
+    month = month.to_i
+    year = year.to_i
+    Date.new(year,month,day)
+  end
+
   def add(name, date)
+    #date = process_date(date)
     @list << ({name: name, date: date})
   end
 

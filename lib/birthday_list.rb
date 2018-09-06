@@ -17,4 +17,3 @@ class BirthdayList
     end
   end
 end
-binding.pry

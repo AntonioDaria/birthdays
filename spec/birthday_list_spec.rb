@@ -19,12 +19,12 @@ describe BirthdayList do
       #2 - Execute (make my object do something)
       subject.add("antonio", "6/5/1983")
       #3 - Assert (did my object do the correct thing?)
-      expect(subject.display).to eq("antonio 6/5/1983")
+      expect{ subject.display }.to output("antonio 6/5/1983\n").to_stdout
     end
     it  "displays multiple names" do
       subject.add("andres", "9/9/1990")
       subject.add("antonio", "7/4/1990")
-      expect(subject.display).to eq()
+      expect{ subject.display }.to output("andres 9/9/1990\nantonio 7/4/1990\n").to_stdout
     end
   end
 end
